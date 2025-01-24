@@ -96,5 +96,7 @@ terraform apply
 
 Type `yes`, and it will prompt you for approval..
 
+#### Visualizing Project Results
 
+[![View All Images](./Project_Results/vpcs-VPC-Consol.jpg)](./Project_Results/)
 
