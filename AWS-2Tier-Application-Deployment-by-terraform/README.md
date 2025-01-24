@@ -1,6 +1,4 @@
-
-
-✨Deploy a 2-tier application on aws cloud through Terraform. 
+#Deploy a 2-tier application on aws cloud through Terraform. 
 
 ### Prerequisites
 
@@ -9,7 +7,7 @@ You can create these resources manually using the AWS Management Console, or you
 
 ### Architectural Diagram 
 
-![alt text](architecture_2tier_AWS.jpg)
+![alt text](AWS_2tier.png)
 
 ## 🖥️ Installation of Terraform
 
@@ -89,14 +87,14 @@ Type the below command to see the plan of the execution
 terraform plan
 ```
 
-✨Finally, HIT the below command to deploy the application...
+✨Finally, Hit the below command to deploy the application...
 ```sh
 terraform apply 
 ```
 
 Type `yes`, and it will prompt you for approval..
 
-#### Visualizing Project Results
+#### Lets Visualizing Project Results
 
-[![View All Images](./Project_Results/vpcs-VPC-Consol.jpg)](./Project_Results/)
+[![View All Images](./Project_Results/Wedding-Lite-Free-Bootstrap-5-HTML-Templ.jpg)](./Project_Results/)
 
