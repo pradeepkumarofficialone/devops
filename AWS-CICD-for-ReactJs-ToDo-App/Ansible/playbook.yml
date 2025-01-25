@@ -1,0 +1,13 @@
+---
+- name: Set up Jenkins & Docker on CI server
+  hosts: jenkins_server
+  become: yes
+  roles:
+    - jenkins
+    - docker
+
+- name: Set up Docker on CD server
+  hosts: cd_server
+  become: yes
+  roles:
+    - docker
