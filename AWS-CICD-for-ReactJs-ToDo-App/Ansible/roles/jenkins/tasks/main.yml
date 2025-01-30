@@ -1,0 +1,61 @@
+---
+
+- name: update apt package index
+  apt:
+    update_cache: yes
+
+- name: Install openjdk-17-jdk
+  apt:
+    name: openjdk-17-jdk
+    state: present
+    update_cache: yes
+
+- name: Check installed openjdk version
+  command: java -version
+  register: java_version
+  ignore_errors: yes
+
+- name: Add Jenkins repository key
+  get_url:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    dest: /usr/share/keyrings/jenkins-keyring.asc
+    mode: '0644'
+
+- name: Add jenkins repository
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian binary/"
+    state: present
+
+- name: update apt cache
+  apt:
+    update_cache: yes 
+
+- name: Install Jenkins 
+  apt:
+    name: jenkins
+    state: present
+
+- name: Ensure Jenkins is accessible on port 8080
+  ufw:
+    rule: allow
+    port: 8080
+    proto: tcp  
+
+- name: Enable Jenkins service at boot
+  ansible.builtin.systemd:
+    name: jenkins
+    enabled: true
+    state: started
+
+- name: Check Jenkins service status
+  ansible.builtin.command:
+    cmd: systemctl status jenkins
+  register: jenkins_status
+
+- name: Display Jenkins status
+  ansible.builtin.debug:
+    msg: "{{ jenkins_status.stdout }}"
+
+
+
+
